@@ -1,0 +1,51 @@
+[
+  {
+    "name": "resolved",
+    "when": {"field": "status", "equals": "resolved"},
+    "label": "IGNORE",
+    "weight": 3,
+    "fact": "the alert has already resolved"
+  },
+  {
+    "name": "critical-severity",
+    "when": {"field": "severity", "equals": "critical"},
+    "label": "ACT"
+  },
+  {
+    "name": "production",
+    "when": [
+      {"field": "labels.env", "equals": "prod"},
+      {"field": "severity", "equals": "critical"}
+    ],
+    "label": "ACT",
+    "fact": "it is a critical alert in production"
+  },
+  {
+    "name": "not-production",
+    "when": {"field": "labels.env", "in": ["staging", "dev", "test"]},
+    "label": "IGNORE",
+    "weight": 2,
+    "fact": "it comes from a non-production environment"
+  },
+  {
+    "name": "error-budget-burning",
+    "when": {"field": "annotations.error_ratio", "gt": 0.05},
+    "label": "ACT",
+    "weight": 2
+  },
+  {
+    "name": "warning-severity",
+    "when": {"field": "severity", "equals": "warning"},
+    "label": "WATCH"
+  },
+  {
+    "name": "disk-not-urgent",
+    "when": {"field": "annotations.used_percent", "lt": 90},
+    "label": "WATCH"
+  },
+  {
+    "name": "certificate-has-time",
+    "when": {"field": "annotations.days_left", "gte": 14},
+    "label": "WATCH"
+  }
+]

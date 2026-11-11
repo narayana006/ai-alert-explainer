@@ -1,0 +1,40 @@
+{
+  "version": "4",
+  "receiver": "explainer",
+  "status": "firing",
+  "externalURL": "https://alertmanager.example.com",
+  "commonLabels": {"team": "shop"},
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {"alertname": "CheckoutHighErrorRate", "severity": "critical", "env": "prod", "service": "checkout"},
+      "annotations": {"summary": "12% of checkout requests are failing", "error_ratio": "0.12"},
+      "startsAt": "2026-11-09T14:02:00Z"
+    },
+    {
+      "status": "firing",
+      "labels": {"alertname": "DiskFillingUp", "severity": "warning", "env": "prod", "instance": "db-1.example.com"},
+      "annotations": {"summary": "Disk is 81% full on db-1.example.com", "used_percent": "81"},
+      "startsAt": "2026-11-09T13:40:00Z"
+    },
+    {
+      "status": "firing",
+      "labels": {"alertname": "HighCPU", "severity": "critical", "env": "staging", "service": "search"},
+      "annotations": {"summary": "CPU above 95% for 10 minutes on staging search"},
+      "startsAt": "2026-11-09T13:55:00Z"
+    },
+    {
+      "status": "resolved",
+      "labels": {"alertname": "PodRestarting", "severity": "critical", "env": "prod", "service": "cart"},
+      "annotations": {"summary": "cart pod restarted 3 times"},
+      "startsAt": "2026-11-09T12:10:00Z",
+      "endsAt": "2026-11-09T12:25:00Z"
+    },
+    {
+      "status": "firing",
+      "labels": {"alertname": "CertificateExpiry", "env": "prod", "service": "gateway"},
+      "annotations": {"summary": "TLS certificate for shop.example.com expires in 20 days", "days_left": "20"},
+      "startsAt": "2026-11-09T06:00:00Z"
+    }
+  ]
+}
