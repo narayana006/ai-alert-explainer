@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-alert-explainer"
+version = "0.1.0"
+description = "Explain an alert as ACT, WATCH or IGNORE with reasoning and a confidence score, from your own rules and an optional model."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Narayana Vemburaj" }]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/narayana006/ai-alert-explainer"
+
+[project.scripts]
+ai-alert-explainer = "ai_alert_explainer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
